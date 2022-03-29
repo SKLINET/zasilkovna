@@ -8,10 +8,10 @@ class Tool
 {
     /**
      * Convert mixed input into string
-     * @param mixed $input
+     * @param array|string $input
      * @return string
      */
-    public static function convertToString(mixed $input): string
+    public static function convertToString($input): string
     {
         if (\is_array($input)) {
             return \implode(', ', $input);
