@@ -210,9 +210,9 @@ final class PacketAttributes implements IModel
 
     public function setPhone(?string $phone, int $region = 420, bool $normalize = true): void
     {
-        if ($phone && $normalize) {
-            $phone = Tool::normalizePhoneNumber($phone, $region);
-        }
+//        if ($phone && $normalize) {
+//            $phone = Tool::normalizePhoneNumber($phone, $region);
+//        }
         $this->phone = $phone;
     }
 
