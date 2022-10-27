@@ -373,16 +373,36 @@ final class PacketAttributes implements IModel
         $this->customerBarcode = $customerBarcode;
     }
 
-    public function addAttribute(string $key, string $value): void
+    /**
+     * @param string $key
+     * @param string|number|float $value
+     *
+     * @return void
+     */
+    public function addAttribute(string $key, $value): void
     {
+        if ( ! is_scalar($value)) {
+            throw new \BadMethodCallException('You can pass only scalar value');
+        }
+
         $this->attributes['attribute'][] = [
             'key'   => $key,
             'value' => $value,
         ];
     }
 
-    public function addItem(string $key, string $value): void
+    /**
+     * @param string $key
+     * @param string|number|float $value
+     *
+     * @return void
+     */
+    public function addItem(string $key, $value): void
     {
+        if ( ! is_scalar($value)) {
+            throw new \BadMethodCallException('You can pass only scalar value');
+        }
+
         $this->items['item']['attributes']['attribute'][] = [
             'key'   => $key,
             'value' => $value,
