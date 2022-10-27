@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Salamek\Zasilkovna\Model;
 
-use Salamek\Zasilkovna\Tool;
-
 final class PacketAttributes implements IModel
 {
     private string $number;
@@ -52,6 +50,9 @@ final class PacketAttributes implements IModel
 
     private ?string $customerBarcode;
 
+    private ?array $attributes;
+
+    private ?array $items;
 
     public function __construct(
         string $number,
@@ -372,6 +373,21 @@ final class PacketAttributes implements IModel
         $this->customerBarcode = $customerBarcode;
     }
 
+    public function addAttribute(string $key, string $value): void
+    {
+        $this->attributes['attribute'][] = [
+            'key'   => $key,
+            'value' => $value,
+        ];
+    }
+
+    public function addItem(string $key, string $value): void
+    {
+        $this->items['item']['attributes']['attribute'][] = [
+            'key'   => $key,
+            'value' => $value,
+        ];
+    }
 
     /**
      * @return mixed[]
