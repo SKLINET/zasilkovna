@@ -382,7 +382,9 @@ final class PacketAttributes implements IModel
     public function addAttribute(string $key, $value): void
     {
         if ( ! is_scalar($value)) {
-            throw new \BadMethodCallException('You can pass only scalar value');
+            if ( ! is_null($value)) {
+                throw new \BadMethodCallException('You can pass only scalar value');
+            }
         }
 
         $this->attributes['attribute'][] = [
@@ -400,7 +402,9 @@ final class PacketAttributes implements IModel
     public function addItem(string $key, $value): void
     {
         if ( ! is_scalar($value)) {
-            throw new \BadMethodCallException('You can pass only scalar value');
+            if ( ! is_null($value)) {
+                throw new \BadMethodCallException('You can pass only scalar value');
+            }
         }
 
         $this->items['item']['attributes']['attribute'][] = [
